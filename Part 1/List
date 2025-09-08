@@ -1,0 +1,153 @@
+A list is a collection of items in a particular order. You can make a list that
+includes the letters of the alphabet, the digits from 0–9, or the names of
+all the people in your family. You can put anything you want into a list, and
+the items in your list don’t have to be related in any particular way. Because
+a list usually contains more than one element, it’s a good idea to make the
+name of your list plural, such as letters, digits, or names.
+
+In Python, square brackets ([]) indicate a list, and individual elements
+in the list are separated by commas. Here’s a simple example of a list that
+contains a few kinds of bicycles:
+
+bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+print(bicycles)
+['trek', 'cannondale', 'redline', 'specialized']
+
+------------------------------------------------------------------------------------------------
+
+Index Positions:
+
+bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+print(bicycles[1])
+print(bicycles[3])
+
+cannondale
+specialized
+
+Python has a special syntax for accessing the last element in a list. By ask-
+ing for the item at index -1, Python always returns the last item in the list:
+
+bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+print(bicycles[-1])
+specialized
+
+bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+message = f"My first bicycle was a {bicycles[0].title()}."
+print(message)
+My first bicycle was a Trek.
+
+-----------------------------------------------------------------------------------------------
+
+Changing, Adding, and Removing Elements:
+
+Modifying Elements in a List:
+
+motorcycles = ['honda', 'yamaha', 'suzuki']
+motorcycles[0] = 'ducati'
+print(motorcycles)
+
+Adding Elements to a List: append
+
+motorcycles.append('ducati')
+print(motorcycles)
+['honda', 'yamaha', 'suzuki']
+['honda', 'yamaha', 'suzuki', 'ducati']
+
+Removing Elements from a List: del
+
+motorcycles = ['honda', 'yamaha', 'suzuki']
+print(motorcycles)
+del motorcycles[0]
+print(motorcycles)
+
+pop() --> removes the LAST item in a list, but it lets you work
+with that item after removing it. Like a stack
+
+motorcycles = ['honda', 'yamaha', 'suzuki']
+print(motorcycles)
+popped_motorcycle = motorcycles.pop()
+print(motorcycles)
+print(popped_motorcycle)
+
+['honda', 'yamaha', 'suzuki']
+['honda', 'yamaha']
+suzuki
+
+You can use pop() to remove an item from any position in a list by including
+the index of the item you want to remove in parentheses.
+
+first_owned = motorcycles.pop(0)
+print(f"The first motorcycle I owned was a {first_owned.title()}.")
+
+Removing an Item by Value:
+
+motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
+print(motorcycles)
+motorcycles.remove('ducati')
+print(motorcycles)
+
+['honda', 'yamaha', 'suzuki', 'ducati']
+['honda', 'yamaha', 'suzuki']
+
+------------------------------------------------------------------------------------------------------
+
+Organizing a List:
+
+Sorting a List Permanently with the sort() Method:
+
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+ cars.sort()
+print(cars)
+['audi', 'bmw', 'subaru', 'toyota'] --> The cars are now in alphabetical order
+
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+cars.sort(reverse=True)
+print(cars)
+['toyota', 'subaru', 'bmw', 'audi'] --> You can also sort this list in reverse alphabetical order by passing the
+argument reverse=True to the sort() method.
+
+
+Sorting a List Temporarily with the sorted() Function:
+
+The sorted() function lets you display your list
+in a particular order but doesn’t affect the actual order of the list.
+
+print("Here is the original list:")
+print(cars)
+print("\nHere is the sorted list:")
+print(sorted(cars))
+print("\nHere is the original list again:")
+print(cars)     
+
+Here is the original list:
+['bmw', 'audi', 'toyota', 'subaru']
+Here is the sorted list:
+['audi', 'bmw', 'subaru', 'toyota']
+Here is the original list again:
+['bmw', 'audi', 'toyota', 'subaru']
+
+
+Printing a List in Reverse Order:
+
+The reverse() method changes the order of a list permanently, but you
+can revert to the original order anytime by applying reverse() to the same
+list a second time.
+
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+print(cars)
+cars.reverse()
+print(cars)
+
+['bmw', 'audi', 'toyota', 'subaru']
+['subaru', 'toyota', 'audi', 'bmw']
+
+Notice that reverse() doesn’t sort backward alphabetically; it simply
+reverses the order of the list:
+
+
+Finding the Length of a List:
+
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+len(cars)
+4
+
