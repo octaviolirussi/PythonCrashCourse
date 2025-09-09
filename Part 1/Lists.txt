@@ -151,3 +151,119 @@ cars = ['bmw', 'audi', 'toyota', 'subaru']
 len(cars)
 4
 
+--------------------------------------------------------------------------------------------------------------
+
+Looping:
+
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:
+print(magician)
+
+---------------------------------------------------------------------------------------------------------------
+
+Numerical Lists:
+
+Using the range() Function:
+
+for value in range(1, 5):
+print(value)
+
+1
+2
+3
+4
+
+To print the numbers from 1 to 5, you would use range(1, 6):
+
+
+Using range() to Make a List of Numbers:
+
+numbers = list(range(1, 6))
+print(numbers)
+
+[1, 2, 3, 4, 5]
+
+We can also use the range() function to tell Python to skip numbers in a
+given range.
+
+even_numbers = list(range(2, 11, 2))
+print(even_numbers)
+
+[2, 4, 6, 8, 10]
+
+
+Simple Statistics with a List of Numbers:
+
+digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+min(digits)
+0
+max(digits)
+9
+sum(digits)
+45
+
+List Comprehensions:
+
+squares = [value**2 for value in range(1, 11)]
+print(squares)
+
+squares = [value for value in range(1, 11)] --> the same values as the range 
+print(squares)
+
+--------------------------------------------------------------------------------------------
+Working with Part of a List:
+
+Slicing a List:
+
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[0:3])
+
+['charles', 'martina', 'michael']
+
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[1:4])
+
+['martina', 'michael', 'florence']
+
+
+Looping Through a Slice:
+
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print("Here are the first three players on my team:")
+for player in players[:3]:
+    print(player.title())
+
+Here are the first three players on my team:
+Charles
+Martina
+Michael
+
+
+Copying a List:
+
+my_foods = ['pizza', 'falafel', 'carrot cake']
+
+friend_foods = my_foods[:] --> it cannot be friend_foods = my_foods because both variables will point to the same list
+print("My favorite foods are:")
+print(my_foods)
+print("\nMy friend's favorite foods are:")
+print(friend_foods)
+
+----------------------------------------------------------------------------------------------------------------------
+
+Tuples:
+
+create a list of items that cannot change. Tuples allow you to do just that.
+
+A tuple looks just like a list except you use parentheses instead of square
+brackets.
+
+dimensions = (200, 50)
+print(dimensions[0])
+print(dimensions[1])
+
+Looping Through All Values in a Tuple:
+
+You can loop over all the values in a tuple using a for loop, just as you did
+with a list
+

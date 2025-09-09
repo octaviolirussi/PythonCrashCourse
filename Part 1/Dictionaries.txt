@@ -1,0 +1,247 @@
+A dictionary in Python is a collection of key-value pairs. Each key is connected
+to a value, and you can use a key to access the value associated with that key.
+
+alien_0 = {'color': 'green', 'points': 5}
+print(alien_0['color'])
+print(alien_0['points'])
+
+green
+5
+
+Accessing Values in a Dictionary:
+
+To get the value associated with a key, give the name of the dictionary and
+then place the key inside a set of square brackets, as shown here:
+
+alien_0 = {'color': 'green', 'points': 5}
+new_points = alien_0['points']
+print(f"You just earned {new_points} points!")
+
+
+Adding New Key-Value Pairs:
+
+Dictionaries are dynamic structures, and you can add new key-value pairs
+to a dictionary at any time.
+
+alien_0 = {'color': 'green', 'points': 5}
+print(alien_0)
+alien_0['x_position'] = 0
+alien_0['y_position'] = 25
+print(alien_0)
+
+{'color': 'green', 'points': 5}
+{'color': 'green', 'points': 5, 'y_position': 25, 'x_position': 0}
+
+
+Modifying Values in a Dictionary:
+
+To modify a value in a dictionary, give the name of the dictionary with the
+key in square brackets and then the new value you want associated with
+that key.
+
+alien_0 = {'color': 'green'}
+print(f"The alien is {alien_0['color']}.")
+alien_0['color'] = 'yellow'
+print(f"The alien is now {alien_0['color']}.")
+
+The alien is green.
+The alien is now yellow.
+
+
+Removing Key-Value Pairs: del
+
+alien_0 = {'color': 'green', 'points': 5}
+print(alien_0)
+del alien_0['points']
+print(alien_0)
+
+{'color': 'green', 'points': 5}
+{'color': 'green'}
+
+
+A Dictionary of Similar Objects:
+
+You can also use a dictionary to store one
+kind of information about many objects.
+
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+language = favorite_languages['sarah'].title()
+print(f"Sarah's favorite language is {language}.")
+
+
+Using get() to Access Values:
+
+Using keys in square brackets to retrieve the value you’re interested in
+from a dictionary might cause one potential problem: if the key you ask for
+doesn’t exist, you’ll get an error.
+
+alien_0 = {'color': 'green', 'speed': 'slow'}
+print(alien_0['points']) --> This results in a traceback, showing a KeyError:
+
+The get() method requires a key as a first argument. As a second
+optional argument, you can pass the value to be returned if the key doesn’t
+exist:
+
+alien_0 = {'color': 'green', 'speed': 'slow'}
+point_value = alien_0.get('points', 'No point value assigned.')
+print(point_value)
+
+No point value assigned.
+
+-----------------------------------------------------------------------------------------------
+
+Looping Through a Dictionary:
+
+Looping Through All Key-Value Pairs:
+
+user_0 = {
+'username': 'efermi',
+'first': 'enrico',
+'last': 'fermi',
+}
+
+for key, value in user_0.items():
+print(f"\nKey: {key}")
+print(f"Value: {value}")
+
+
+Looping Through All the Keys in a Dictionary:
+
+The keys() method is useful when you don’t need to work with all of the
+values in a dictionary.
+
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+for name in favorite_languages.keys():
+print(name.title())
+
+Jen
+Sarah
+Edward
+Phil
+
+Looping through the keys is actually the default behavior when looping
+through a dictionary, so this code would have exactly the same output if you
+wrote: for name in favorite_languages:
+
+
+Looping Through a Dictionary’s Keys in a Particular Order:
+
+for name in sorted(favorite_languages.keys()):
+print(f"{name.title()}, thank you for taking the poll.")
+
+Edward, thank you for taking the poll.
+Jen, thank you for taking the poll.
+Phil, thank you for taking the poll.
+Sarah, thank you for taking the poll.
+
+
+Looping Through All Values in a Dictionary:
+
+If you are primarily interested in the values that a dictionary contains,
+you can use the values() method to return a list of values without any keys.
+
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+print("The following languages have been mentioned:")
+for language in favorite_languages.values():
+    print(language.title())
+
+The following languages have been mentioned:
+Python
+C
+Python
+Ruby
+
+
+for language in set(favorite_languages.values()): --> without repetition
+    print(language.title())
+
+Python
+C
+Ruby
+
+-----------------------------------------------------------------------------------------------------------------------
+Nesting
+
+Sometimes you’ll want to store multiple dictionaries in a list, or a list of
+items as a value in a dictionary. This is called nesting. You can nest dictionar-
+ies inside a list, a list of items inside a dictionary, or even a dictionary inside
+another dictionary.
+
+
+A List of Dictionaries:
+
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'yellow', 'points': 10}
+alien_2 = {'color': 'red', 'points': 15}
+aliens = [alien_0, alien_1, alien_2]
+for alien in aliens:
+    print(alien)
+
+{'color': 'green', 'points': 5}
+{'color': 'yellow', 'points': 10}
+{'color': 'red', 'points': 15}
+
+
+A List in a Dictionary:
+
+pizza = {
+'crust': 'thick',
+'toppings': ['mushrooms', 'extra cheese'],
+}
+
+print(f"You ordered a {pizza['crust']}-crust pizza "
+"with the following toppings:")
+
+for topping in pizza['toppings']:
+    print(f"\t{topping}")
+
+
+A Dictionary in a Dictionary:
+
+users = {
+    'aeinstein': {
+        'first': 'albert',
+        'last': 'einstein',
+        'location': 'princeton',
+    },
+    'mcurie': {
+        'first': 'marie',
+        'last': 'curie',
+        'location': 'paris',
+    },  
+}
+
+for username, user_info in users.items():
+    print(f"\nUsername: {username}")
+    full_name = f"{user_info['first']} {user_info['last']}"
+    location = user_info['location']
+
+    print(f"\tFull name: {full_name.title()}")
+    print(f"\tLocation: {location.title()}")
+
+Username: aeinstein
+Full name: Albert Einstein
+Location: Princeton
+
+Username: mcurie
+Full name: Marie Curie
+Location: Paris
+
