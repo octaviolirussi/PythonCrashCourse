@@ -1,0 +1,52 @@
+When you write a function or a class, you
+can also write tests for that code. Testing
+proves that your code works as it’s supposed
+to in response to all the input types it’s designed
+to receive. When you write tests, you can be confident
+that your code will work correctly as more people
+begin to use your programs.
+
+
+Unit Tests and Test Cases:
+
+The module unittest from the Python standard library provides tools for
+testing your code.
+
+A unit test verifies that one specific aspect of a function’s
+behavior is correct.
+
+A test case is a collection of unit tests that together prove
+that a function behaves as it’s supposed to, within the full range of situa-
+tions you expect it to handle.
+
+
+A Passing Test:
+
+import unittest
+from name_function import get_formatted_name
+
+class NamesTestCase(unittest.TestCase):
+    """Tests for 'name_function.py'."""
+    
+    def test_first_last_name(self):
+        """Do names like 'Janis Joplin' work?"""
+        formatted_name = get_formatted_name('janis', 'joplin')
+        self.assertEqual(formatted_name, 'Janis Joplin') --> Assert methods verify that a result you received matches the result you expected to receive.
+
+if __name__ == '__main__':
+unittest.main() --> runs the test case
+
+
+A Failing Test:
+
+Here’s a new version of get_formatted_name() that requires a middle name
+argument:
+
+def get_formatted_name(first, middle, last):
+    """Generate a neatly formatted full name."""
+        full_name = f"{first} {middle} {last}"
+        return full_name.title()
+
+What do you do when a test fails?
+
+si llegaste hasta aca al Octavio del pasado le dio paja seguir

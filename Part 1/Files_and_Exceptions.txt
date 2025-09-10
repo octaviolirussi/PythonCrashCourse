@@ -1,0 +1,185 @@
+Reading from a File:
+
+with open('pi_digits.txt') as file_object:
+    contents = file_object.read()
+print(contents)
+
+To do any work with a file, even just printing its con-
+tents, you first need to open the file to access it.
+The open() function needs one argument: the name of the file you want to open.
+Python assigns this object to file_object, which we’ll work with later in the program.
+
+
+File Paths:
+
+Sometimes, depending on how you organize your work, the file
+you want to open won’t be in the same directory as your program file.
+
+To get Python to open files from a directory other than the one where your pro-
+gram file is stored, you need to provide a file path, which tells Python to
+look in a specific location on your system.
+
+
+Reading Line by Line:
+
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+    for line in file_object:
+    print(line)
+
+
+Making a List of Lines from a File:
+
+When you use with, the file object returned by open() is only available inside
+
+the with block that contains it. If you want to retain access to a file’s con-
+tents outside the with block, you can store the file’s lines in a list inside the
+block and then work with that list. You can process parts of the file immedi-
+ately and postpone some processing for later in the program.
+
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+    lines = file_object.readlines() --> the readlines() method takes each line from the file and stores it in a list.
+    
+for line in lines:
+    print(line.rstrip())
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Writing to a File:
+
+One of the simplest ways to save data is to write it to a file. When you write
+text to a file, the output will still be available after you close the terminal
+containing your program’s output. You can examine output after a program
+finishes running, and you can share the output files with others as well. You
+can also write programs that read the text back into memory and work with
+it again later.
+
+
+Writing to an Empty File:
+
+filename = 'programming.txt'
+
+with open(filename, 'w') as file_object: --> w tells python that you are going to write the file
+    file_object.write("I love programming.")
+
+we use the write() method on the file object to write a string to
+the file. This program has no terminal output, but if you open the file
+programming.txt, you’ll see one line:
+
+
+Appending to a File:
+
+If you want to add content to a file instead of writing over existing content,
+you can open the file in append mode.
+
+When you open a file in append mode,
+Python doesn’t erase the contents of the file before returning the file object.
+Any lines you write to the file will be added at the end of the file. If the file
+doesn’t exist yet, Python will create an empty file for you.
+
+filename = 'programming.txt'
+
+with open(filename, 'a') as file_object: --> append mode
+    file_object.write("I also love finding meaning in large datasets.\n")
+    file_object.write("I love creating apps that can run in a browser.\n")
+
+------------------------------------------------------------------------------------------------------------------------------
+Exceptions:
+
+Python uses special objects called exceptions to manage errors that arise dur-
+ing a program’s execution. Whenever an error occurs that makes Python
+unsure what to do next, it creates an exception object. If you write code
+that handles the exception, the program will continue running. If you don’t
+handle the exception, the program will halt and show a traceback, which
+includes a report of the exception that was raised.
+
+
+Exceptions are handled with try-except blocks. A try-except block asks
+Python to do something, but it also tells Python what to do if an excep-
+tion is raised. When you use try-except blocks, your programs will continue
+running even if things start to go wrong. Instead of tracebacks, which can
+be confusing for users to read, users will see friendly error messages that
+you write.
+
+
+Using try-except Blocks:
+
+When you think an error may occur, you can write a try-except block to
+handle the exception that might be raised. You tell Python to try running
+some code, and you tell it what to do if the code results in a particular kind
+of exception.
+
+try:
+    print(5/0)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+
+
+The else Block:
+
+--snip--
+while True:
+    --snip--
+    if second_number == 'q':
+        break
+    try:
+        answer = int(first_number) / int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by 0!")
+    else:
+        print(answer)
+
+In this case if the division operation is successful, we use the else block to
+print the result
+
+The except block tells Python how to respond when a ZeroDivisionError
+arises
+
+
+Handling the FileNotFoundError Exception:
+
+filename = 'alice.txt'
+
+try:
+    with open(filename, encoding='utf-8') as f:
+        contents = f.read()
+except FileNotFoundError:
+    print(f"Sorry, the file {filename} does not exist.")
+
+------------------------------------------------------------------------------------------------------------------------------
+Storing Data:
+
+When users close a program, you’ll almost always want to save the information
+they entered. A simple way to do this involves storing your data using the
+json module.
+
+The json module allows you to dump simple Python data structures into a
+file and load the data from that file the next time the program runs.
+
+
+Using json.dump() and json.load():
+
+The json.dump() function takes two arguments: a piece of data to
+store and a file object it can use to store the data.
+
+import json
+
+numbers = [2, 3, 5, 7, 11, 13]
+filename = 'numbers.json'
+with open(filename, 'w') as f:
+    json.dump(numbers, f) --> Convierte un objeto de Python a JSON y lo guarda en un archivo.
+
+At we choose a filename in which to store the list of numbers.
+It’s customary to use the file extension .json to indicate that the data in
+the file is stored in the JSON format. Then we open the file in write mode,
+which allows json to write the data to the file. At we use the json.dump()
+function to store the list numbers in the file numbers.json.
+
+import json
+
+filename = 'numbers.json'
+with open(filename) as f:
+    numbers = json.load(f) --> Lee el contenido JSON de un archivo y lo convierte en un objeto de Python.
+print(numbers)
+
+
